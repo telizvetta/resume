@@ -461,6 +461,98 @@
             font-size: 12px;
             font-weight: 500;
         }
+ /* Education Section */
+ .education {
+            background: var(--darker);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .education-card {
+            background: var(--dark-accent);
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .education-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border-color: rgba(0, 217, 255, 0.2);
+        }
+
+        .education-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .education-date {
+            color: var(--neon-blue);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .education-desc {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+        /* Education Section */
+        .education {
+            background: var(--darker);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .education-card {
+            background: var(--dark-accent);
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .education-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border-color: rgba(0, 217, 255, 0.2);
+        }
+
+        .education-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .education-date {
+            color: var(--neon-blue);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .education-desc {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
 
         /* Contact Section */
         .contact {
@@ -617,13 +709,13 @@
         }
 
         @keyframes float {
-            0% {
+            from {
                 transform: translateY(0) rotate(0deg);
             }
             50% {
                 transform: translateY(-20px) rotate(5deg);
             }
-            100% {
+            to {
                 transform: translateY(0) rotate(0deg);
             }
         }
@@ -763,7 +855,6 @@
             }
         }
 
- 
         /* Responsive Design */
         @media (max-width: 992px) {
             .about-content {
@@ -771,6 +862,10 @@
             }
             
             .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .education-grid {
                 grid-template-columns: 1fr;
             }
             
@@ -842,7 +937,7 @@
             position: fixed;
             pointer-events: none;
             z-index: 9999;
-            transform: translate(-50%, -50%);
+            transform: translate(-50%, -50);
             transition: transform 0.1s;
         }
 
@@ -908,7 +1003,7 @@
         
         <div class="container hero-content">
             <h1><span class="glitch" data-text="Design"> Design </span> Project/Teamlead</h1>
-            <p>Специалист с опытом управления дизайн-командами, разработки ключевых визуальных концепций и создания эффективных коммуникационных материалов для крупных брендов.</p>
+            <p>Специалист с опытом управления дизайн-командами, разработки ключевых визуальных концепций и создания эффективных коммуникационных материалов для крупных брендов</p>
             <div class="hero-buttons">
                 <a href="#projects" class="btn btn-primary">Мои работы</a>
                 <a href="#contact" class="btn btn-secondary">Связаться со мной</a>
@@ -928,7 +1023,7 @@
                     <h3>Мой путь в дизайне и управлении</h3>
                     <p>Меня зовут Елизавета Тураева. Я руковожу созданием коммуникационных материалов для клиентов из сферы fintech, edtech и e-commerce: комплексные КП, презентации, инфографика, дайджесты, концепции мерча, баннеры и рассылки.</p>
                     <p>Формирую рабочие группы под задачи проекта, координирую работу графических дизайнеров, моушен-дизайнеров и иллюстраторов. Распределяю задачи, контролирую сроки и качество исполнения.</p>
-                    <p>В своей работе использую современные инструменты и методологии, такие как Figma, Adobe Creative Cloud, Tilda и AI-инструменты. Постоянно изучаю новые технологии и улучшаю свои навыки.</p>
+                    <p>В своей работе использую современные инструменты и методологии, такие как Figma, Adobe Creative Cloud, Tilda и AI-инструменты. Постоянно изучаю новые технологии и улучшаю свои навыки</p>
                 </div>
                 <div class="skills-grid">
                     <div class="skill-item">
@@ -965,10 +1060,10 @@
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="timeline-content">
-                        <div class="timeline-date">2022 — настоящее время</div>
+                        <div class="timeline-date">2023 — настоящее время</div>
                         <div class="timeline-title">UI/UX Designer → Ведущий дизайнер</div>
                         <div class="timeline-desc">Маркетинговое агентство (полный цикл), Санкт-Петербург</div>
-                        <p>Руководство созданием коммуникационных материалов для клиентов из сферы fintech, edtech и e-commerce. Формирование рабочих групп под задачи проекта, координация работы графических дизайнеров, моушен-дизайнеров и иллюстраторов.</p>
+                        <p>Руководство созданием коммуникационных материалов для клиентов из сферы fintech, edtech и e-commerce. Формирование рабочих групп под задачи проекта, координация работы графических дизайнеров, моушен-дизайнеров и иллюстраторов</p>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -976,7 +1071,7 @@
                         <div class="timeline-date">Январь 2025 — Апрель 2025</div>
                         <div class="timeline-title">Бизнес-аналитик / Младший менеджер проектов</div>
                         <div class="timeline-desc">ALT3 Capital, Москва</div>
-                        <p>Управление и приоритизация бэклога продукта. Участие в полном цикле разработки: координация работ по выпуску новых фич (API), работа с продовой средой, анализ и документирование багов.</p>
+                        <p>Управление и приоритизация бэклога продукта. Участие в полном цикле разработки: координация работ по выпуску новых фич (API), работа с продовой средой, анализ и документирование багов</p>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -984,7 +1079,7 @@
                         <div class="timeline-date">Июнь 2024 — Январь 2025</div>
                         <div class="timeline-title">Стажер-аналитик (Проектный офис)</div>
                         <div class="timeline-desc">Альфа-Банк, Москва</div>
-                        <p>Анализ и оптимизация бизнес-процессов. Сбор и анализ данных, взятие на себя ответственности за формирование отчетности по ключевым партнерам банка.</p>
+                        <p>Анализ и оптимизация бизнес-процессов. Сбор и анализ данных, взятие на себя ответственности за формирование отчетности по ключевым партнерам банка</p>
                     </div>
                 </div>
             </div>
@@ -1001,7 +1096,7 @@
                 <div class="project-card">
                     <div class="project-content">
                         <h3>Победитель финансового хакатона</h3>
-                        <p>Возглавила команду на хакатоне «Разработка алгоритма прогнозирования ценовых движений на финансовом рынке». Отвечала за разработку UX/UI дашборда для визуализации данных и презентацию решения.</p>
+                        <p>Возглавила команду на хакатоне «Разработка алгоритма прогнозирования ценовых движений на финансовом рынке». Отвечала за разработку UX/UI дашборда для визуализации данных и презентацию решения</p>
                         <div class="project-tags">
                             <span class="project-tag">Управление</span>
                             <span class="project-tag">Дизайн</span>
@@ -1012,7 +1107,7 @@
                 <div class="project-card">
                     <div class="project-content">
                         <h3>Призер кейс-чемпионата от Альфа-Банка и VK</h3>
-                        <p>Руководила командой в кейсе «Банкинг в мессенджерах». Разработала и представила жюри концепцию AI-агента и его визуальное воплощение, что принесло команде 3 место.</p>
+                        <p>Руководила командой в кейсе «Банкинг в мессенджерах». Разработала и представила жюри концепцию AI-агента и его визуальное воплощение, что принесло команде 3 место</p>
                         <div class="project-tags">
                             <span class="project-tag">Концепция</span>
                             <span class="project-tag">AI</span>
@@ -1023,13 +1118,39 @@
                 <div class="project-card">
                     <div class="project-content">
                         <h3>Коммуникационные материалы для Газпром Нефть, Балтика, ВШЭ, Цифровая академия будущего, ВАВТ </h3>
-                        <p>Разработка ключевого визуала, презентаций, инфографики и концепции мерча для крупнейших брендов России.</p>
+                        <p>Разработка ключевого визуала, презентаций, инфографики и концепции мерча для крупнейших брендов России</p>
                         <div class="project-tags">
                             <span class="project-tag">Дизайн</span>
                             <span class="project-tag">Презентации</span>
                             <span class="project-tag">Мерч</span>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="education">
+        <div class="container">
+            <div class="section-title">
+                <h2>Образование</h2>
+            </div>
+            <div class="education-grid">
+                <div class="education-card">
+                    <h3>Высшая школа менеджмента СПбГУ</h3>
+                    <div class="education-date">2021 - 2025</div>
+                    <div class="education-desc">Бакалавриат по направлению "Менеджмент"</div>
+                </div>
+                <div class="education-card">
+                    <h3>City University of Hong Kong</h3>
+                    <div class="education-date">2024</div>
+                    <div class="education-desc">Программа обмена, Business school, management of high-tech innovations</div>
+                </div>
+                <div class="education-card">
+                    <h3>Московский физико-технический институт (МФТИ)</h3>
+                    <div class="education-date">2025</div>
+                    <div class="education-desc">Основы машинного и глубокого обучения. Специалист по анализу big data с использованием существующих в организации методологической и технологической инфраструктуры</div>
                 </div>
             </div>
         </div>
@@ -1044,12 +1165,12 @@
             <div class="contact-container">
                 <div class="contact-info">
                     <h3>Давайте создадим что-то вместе!</h3>
-                    <p>Я всегда открыта для обсуждения новых проектов и идей. Свяжитесь со мной любым удобным способом.</p>
+                    <p>Я всегда открыта для обсуждения новых проектов и идей. Свяжитесь со мной любым удобным способом!</p>
                     <div class="contact-details">
                         <p><i class="fas fa-envelope"></i> telizveta@mail.ru</p>
                         <p><i class="fas fa-phone"></i> +7 (919) 127-55-17</p>
                         <p><i class="fas fa-map-marker-alt"></i> Санкт-Петербург, Россия</p>
-                        <p><i class="fab fa-telegram"></i> @llizzavvett</p>
+                        <p><i class="fab fa-telegram"></i> <a href="https://t.me/llizzavvett"> @llizzavvett </a></p>
                     </div>
                 </div>
                

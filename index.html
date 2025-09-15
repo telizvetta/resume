@@ -360,6 +360,7 @@
             border-radius: 10px;
             border: 1px solid rgba(255, 255, 255, 0.05);
             transition: all 0.3s ease;
+            overflow: hidden; /* Исправление: предотвращаем выход текста за границы */
         }
 
         .timeline-content:hover {
@@ -382,6 +383,13 @@
         .timeline-desc {
             color: var(--text-secondary);
             font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .timeline-content p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.5;
         }
 
         /* Projects Section */
@@ -418,14 +426,6 @@
             transform: translateY(-10px);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
             border-color: rgba(0, 217, 255, 0.2);
-        }
-
-        .project-img {
-            height: 200px;
-            background: var(--gradient);
-            position: relative;
-            overflow: hidden;
-            opacity: 0.7;
         }
 
         .project-content {
@@ -763,6 +763,7 @@
             }
         }
 
+ 
         /* Responsive Design */
         @media (max-width: 992px) {
             .about-content {
@@ -775,6 +776,20 @@
             
             .hero h1 {
                 font-size: 48px;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
             }
         }
 
@@ -810,6 +825,11 @@
             .footer-content {
                 flex-direction: column;
                 gap: 30px;
+            }
+            
+            /* Скрываем курсор на мобильных устройствах */
+            .cursor-dot, .cursor-outline {
+                display: none;
             }
         }
 
@@ -851,7 +871,7 @@
     </style>
 </head>
 <body>
-    <!-- Custom cursor -->
+    <!-- Custom cursor (будет скрыт на мобильных) -->
     <div class="cursor-dot"></div>
     <div class="cursor-outline"></div>
 
@@ -862,7 +882,7 @@
     <header>
         <div class="container header-container">
             <div class="logo">
-                <i class="fa fa-asterisk" aria-hidden="true"></i>
+                <i class="fas fa-code"></i>
                 Liss
             </div>
             <nav>
@@ -880,12 +900,14 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="parallax-bg"></div>
+        <div class="parallax-layer layer-1"></div>
+        <div class="parallax-layer layer-2"></div>
         <div class="parallax-item"></div>
         <div class="parallax-item"></div>
         <div class="particles" id="particles"></div>
         
         <div class="container hero-content">
-            <h1>Project/Teamlead <span class="glitch" data-text="дизайна и разработки">дизайна и разработки</span></h1>
+            <h1><span class="glitch" data-text="Design"> Design </span> Project/Teamlead</h1>
             <p>Специалист с опытом управления дизайн-командами, разработки ключевых визуальных концепций и создания эффективных коммуникационных материалов для крупных брендов.</p>
             <div class="hero-buttons">
                 <a href="#projects" class="btn btn-primary">Мои работы</a>
@@ -899,7 +921,7 @@
         <div class="particles" id="about-particles"></div>
         <div class="container">
             <div class="section-title">
-                <h2>Обо мне</h2>
+                <h2 class="glitch-title" data-text="Обо мне">Обо мне</h2>
             </div>
             <div class="about-content">
                 <div class="about-text">
@@ -938,7 +960,7 @@
     <section id="experience" class="experience">
         <div class="container">
             <div class="section-title">
-                <h2>Опыт работы</h2>
+                <h2 class="glitch-title" data-text="Опыт работы">Опыт работы</h2>
             </div>
             <div class="timeline">
                 <div class="timeline-item">
@@ -973,11 +995,10 @@
     <section id="projects" class="projects">
         <div class="container">
             <div class="section-title">
-                <h2>Ключевые проекты</h2>
+                <h2 class="glitch-title" data-text="Ключевые проекты">Ключевые проекты</h2>
             </div>
             <div class="projects-grid">
                 <div class="project-card">
-
                     <div class="project-content">
                         <h3>Победитель финансового хакатона</h3>
                         <p>Возглавила команду на хакатоне «Разработка алгоритма прогнозирования ценовых движений на финансовом рынке». Отвечала за разработку UX/UI дашборда для визуализации данных и презентацию решения.</p>
@@ -989,7 +1010,6 @@
                     </div>
                 </div>
                 <div class="project-card">
-
                     <div class="project-content">
                         <h3>Призер кейс-чемпионата от Альфа-Банка и VK</h3>
                         <p>Руководила командой в кейсе «Банкинг в мессенджерах». Разработала и представила жюри концепцию AI-агента и его визуальное воплощение, что принесло команде 3 место.</p>
@@ -1001,7 +1021,6 @@
                     </div>
                 </div>
                 <div class="project-card">
-
                     <div class="project-content">
                         <h3>Коммуникационные материалы для Газпром Нефть</h3>
                         <p>Разработка ключевого визуала, презентаций, инфографики и концепции мерча для одного из крупнейших брендов России.</p>
@@ -1020,7 +1039,7 @@
     <section id="contact" class="contact">
         <div class="container">
             <div class="section-title">
-                <h2>Контакты</h2>
+                <h2 class="glitch-title" data-text="Контакты">Контакты</h2>
             </div>
             <div class="contact-container">
                 <div class="contact-info">
@@ -1031,12 +1050,27 @@
                         <p><i class="fas fa-phone"></i> +7 (919) 127-55-17</p>
                         <p><i class="fas fa-map-marker-alt"></i> Санкт-Петербург, Россия</p>
                         <p><i class="fab fa-telegram"></i> @llizzavvett</p>
-
                     </div>
                 </div>
-              
+               
+            </div>
+        </div>
+    </section>
 
-  
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">
+                    <i class="fas fa-code"></i>
+                    Liss
+                </div>
+            </div>
+            <div class="copyright">
+                <p>2025 Елизавета Тураева</p>
+            </div>
+        </div>
+    </footer>
 
     <script>
         // Particles animation
@@ -1089,28 +1123,31 @@
             const cursorDot = document.querySelector('.cursor-dot');
             const cursorOutline = document.querySelector('.cursor-outline');
             
-            document.addEventListener('mousemove', (e) => {
-                cursorDot.style.left = `${e.clientX}px`;
-                cursorDot.style.top = `${e.clientY}px`;
-                
-                cursorOutline.style.left = `${e.clientX}px`;
-                cursorOutline.style.top = `${e.clientY}px`;
-            });
-            
-            // Add hover effect on interactive elements
-            const interactiveElements = document.querySelectorAll('a, button, .skill-item, .project-card');
-            
-            interactiveElements.forEach(element => {
-                element.addEventListener('mouseenter', () => {
-                    cursorDot.style.transform = 'translate(-50%, -50%) scale(1.5)';
-                    cursorOutline.style.transform = 'translate(-50%, -50%) scale(1.5)';
+            // Проверяем, не мобильное ли устройство
+            if (window.matchMedia("(pointer: fine)").matches) {
+                document.addEventListener('mousemove', (e) => {
+                    cursorDot.style.left = `${e.clientX}px`;
+                    cursorDot.style.top = `${e.clientY}px`;
+                    
+                    cursorOutline.style.left = `${e.clientX}px`;
+                    cursorOutline.style.top = `${e.clientY}px`;
                 });
                 
-                element.addEventListener('mouseleave', () => {
-                    cursorDot.style.transform = 'translate(-50%, -50%) scale(1)';
-                    cursorOutline.style.transform = 'translate(-50%, -50%) scale(1)';
+                // Add hover effect on interactive elements
+                const interactiveElements = document.querySelectorAll('a, button, .skill-item, .project-card');
+                
+                interactiveElements.forEach(element => {
+                    element.addEventListener('mouseenter', () => {
+                        cursorDot.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                        cursorOutline.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                    });
+                    
+                    element.addEventListener('mouseleave', () => {
+                        cursorDot.style.transform = 'translate(-50%, -50%) scale(1)';
+                        cursorOutline.style.transform = 'translate(-50%, -50%) scale(1)';
+                    });
                 });
-            });
+            }
         }
         
         // Scroll indicator
@@ -1130,6 +1167,7 @@
         // Parallax effect
         function initParallax() {
             const parallaxItems = document.querySelectorAll('.parallax-item');
+            const parallaxLayers = document.querySelectorAll('.parallax-layer');
             
             window.addEventListener('scroll', () => {
                 const scrollTop = window.pageYOffset;
@@ -1139,6 +1177,12 @@
                     const yPos = -(scrollTop * speed);
                     item.style.transform = `translateY(${yPos}px) rotate(${scrollTop * 0.05}deg)`;
                 });
+                
+                parallaxLayers.forEach((layer, index) => {
+                    const speed = 0.01 * (index + 1);
+                    const yPos = -(scrollTop * speed);
+                    layer.style.transform = `translateY(${yPos}px)`;
+                });
             });
         }
         
@@ -1146,43 +1190,45 @@
         function initFormValidation() {
             const contactForm = document.getElementById('contactForm');
             
-            contactForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                
-                const nameInput = document.getElementById('name');
-                const emailInput = document.getElementById('email');
-                const messageInput = document.getElementById('message');
-                
-                let isValid = true;
-                
-                // Simple validation
-                if (nameInput.value.trim() === '') {
-                    isValid = false;
-                    highlightError(nameInput);
-                } else {
-                    removeHighlight(nameInput);
-                }
-                
-                if (emailInput.value.trim() === '' || !isValidEmail(emailInput.value)) {
-                    isValid = false;
-                    highlightError(emailInput);
-                } else {
-                    removeHighlight(emailInput);
-                }
-                
-                if (messageInput.value.trim() === '') {
-                    isValid = false;
-                    highlightError(messageInput);
-                } else {
-                    removeHighlight(messageInput);
-                }
-                
-                if (isValid) {
-                    // Form is valid, you would normally send data to server here
-                    alert('Сообщение отправлено! Спасибо за ваше сообщение.');
-                    contactForm.reset();
-                }
-            });
+            if (contactForm) {
+                contactForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    const nameInput = document.getElementById('name');
+                    const emailInput = document.getElementById('email');
+                    const messageInput = document.getElementById('message');
+                    
+                    let isValid = true;
+                    
+                    // Simple validation
+                    if (nameInput.value.trim() === '') {
+                        isValid = false;
+                        highlightError(nameInput);
+                    } else {
+                        removeHighlight(nameInput);
+                    }
+                    
+                    if (emailInput.value.trim() === '' || !isValidEmail(emailInput.value)) {
+                        isValid = false;
+                        highlightError(emailInput);
+                    } else {
+                        removeHighlight(emailInput);
+                    }
+                    
+                    if (messageInput.value.trim() === '') {
+                        isValid = false;
+                        highlightError(messageInput);
+                    } else {
+                        removeHighlight(messageInput);
+                    }
+                    
+                    if (isValid) {
+                        // Form is valid, you would normally send data to server here
+                        alert('Сообщение отправлено! Спасибо за ваше сообщение.');
+                        contactForm.reset();
+                    }
+                });
+            }
             
             function highlightError(input) {
                 input.style.borderColor = 'var(--neon-pink)';

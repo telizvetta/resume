@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Айдентика SUPME | Дизайн-система</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@300;400;500&display=swap');
+        
+        :root {
+            --primary-pink: #FF2EBD;
+            --primary-purple: #8C52FF;
+            --dark-bg: #0F0F0F;
+            --dark-card: #1A1A1A;
+            --light-text: #FFFFFF;
+            --gray-text: #A0A0A0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #151515 100%);
+            color: var(--light-text);
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        /* Навигация */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 80px;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .logo {
+            font-weight: 800;
+            font-size: 2.2rem;
+            background: linear-gradient(90deg, var(--primary-pink) 0%, var(--primary-purple) 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 15px rgba(255, 46, 189, 0.3));
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--gray-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-pink);
+        }
+        
+        /* Герой секция */
+        .hero {
+            text-align: center;
+            margin-bottom: 100px;
+        }
+        
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--primary-pink) 0%, var(--primary-purple) 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.1;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.4rem;
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+            color: var(--gray-text);
+            font-weight: 400;
+        }
+        
+        /* Стиль для градиентной ссылки */
+        .gradient-link {
+            background: linear-gradient(90deg, var(--primary-pink) 0%, var(--primary-purple) 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 600;
+            text-decoration: none;
+            transition: filter 0.3s ease;
+        }
+        
+        .gradient-link:hover {
+            filter: drop-shadow(0 0 8px rgba(255, 46, 189, 0.5));
+        }
+        
+        /* Секции */
+        .section {
+            margin-bottom: 100px;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-pink) 0%, var(--primary-purple) 100%);
+            border-radius: 2px;
+        }
+        
+        /* Блоки для медиа-контента */
+        .media-block {
+            background: var(--dark-card);
+            border-radius: 16px;
+            padding: 30px;
+            margin: 60px 0;
+            text-align: center;
+        }
+        
+        .media-placeholder {
+            width: 100%;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-text);
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        
+        .media-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .media-caption {
+            color: var(--gray-text);
+            font-style: italic;
+        }
+        
+        /* Цветовая палитра */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .color-card {
+            background: var(--dark-card);
+            border-radius: 16px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .color-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .color-sample {
+            height: 120px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .color-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        
+        .color-code {
+            font-family: 'Roboto Mono', monospace;
+            color: var(--gray-text);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 5px 10px;
+            border-radius: 6px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        
+        /* Типографика */
+        .typography-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .font-sample {
+            background: var(--dark-card);
+            border-radius: 16px;
+            padding: 30px;
+        }
+        
+        .font-name {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-pink);
+        }
+        
+        .font-example {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .font-weights {
+            margin-top: 20px;
+        }
+        
+        .font-weight {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .weight-name {
+            width: 100px;
+            color: var(--gray-text);
+        }
+        
+        .weight-example {
+            font-size: 1.2rem;
+        }
+        
+        /* Элементы дизайна */
+        .elements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .element-card {
+            background: var(--dark-card);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .element-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--primary-purple);
+        }
+        
+        .element-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+        
+        .element-desc {
+            color: var(--gray-text);
+            line-height: 1.6;
+        }
+        
+        /* Вдохновение */
+        .inspiration {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .inspiration-card {
+            background: var(--dark-card);
+            border-radius: 16px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .inspiration-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary-pink) 0%, var(--primary-purple) 100%);
+        }
+        
+        .inspiration-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--primary-pink);
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .media-placeholder {
+                height: 300px;
+            }
+        }
+        
+        /* Анимации */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animated {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+        
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+        
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="nav">
+            <div class="logo">SUPME</div>
+            <div class="nav-links">
+                <a href="/index.html">Главная</a>
+                <a href="#colors">Цвета</a>
+                <a href="#typography">Шрифты</a>
+                <a href="#elements">Элементы</a>
+                <a href="#inspiration">Вдохновение</a>
+            </div>
+        </nav>
+        
+        <section class="hero">
+            <h1 class="hero-title">ДИЗАЙН-СИСТЕМА SUPME</h1>
+            <p class="hero-subtitle">Айдентика, отражающая современный подход к веб-разработке. Сочетание смелых решений и функциональности.</p>
+            <p class="hero-subtitle"><a href="https://supme-spb.ru/" class="gradient-link">supme-spb.ru</a></p>
+        </section>
+        
+        <section class="section" id="colors">
+            <h2 class="section-title">Цветовая палитра</h2>
+            <div class="color-grid">
+                <div class="color-card animated">
+                    <div class="color-sample" style="background-color: #CB5886;">
+                        Pink Energy
+                    </div>
+                    <div class="color-info">
+                        <h3>Основной розовый</h3>
+                        <p>Акцентный цвет, привлекающий внимание к ключевым элементам интерфейса.</p>
+                        <span class="color-code">#CB5886</span>
+                    </div>
+                </div>
+                
+                <div class="color-card animated delay-1">
+                    <div class="color-sample" style="background-color: #5BB9DD;">
+                        Blue Innovation
+                    </div>
+                    <div class="color-info">
+                        <h3>Основной синий</h3>
+                        <p>Символизирует креативность и технологичность бренда.</p>
+                        <span class="color-code">#5BB9DD</span>
+                    </div>
+                </div>
+                
+                <div class="color-card animated delay-2">
+                    <div class="color-sample" style="background-color: #FBF7EF; color: #0F0F0F;">
+                        Light Background
+                    </div>
+                    <div class="color-info">
+                        <h3>Светлый фон</h3>
+                        <p>Создает контраст и подчеркивает яркость акцентных цветов.</p>
+                        <span class="color-code">#FBF7EF</span>
+                    </div>
+                </div>
+                
+                <div class="color-card animated delay-3">
+                    <div class="color-sample" style="background-color: #B2DAE6; color: #0F0F0F;">
+                        Card Surface
+                    </div>
+                    <div class="color-info">
+                        <h3>Поверхность карточек</h3>
+                        <p>Используется для контентных блоков, создавая глубину интерфейса.</p>
+                        <span class="color-code">#B2DAE6</span>
+                    </div>
+                </div>
+            </div>
+            
+ 
+        </section>
+        
+        <section class="section" id="typography">
+            <h2 class="section-title">Типографика</h2>
+            <div class="typography-grid">
+                <div class="font-sample animated">
+                    <h3 class="font-name">Montserrat</h3>
+                    <div class="font-example" style="font-family: 'Montserrat'">
+                        Aa Bb Cc
+                    </div>
+                    <p>Современный геометрический шрифт без засечек, обеспечивающий отличную читаемость.</p>
+                    
+                    <div class="font-weights">
+                        <div class="font-weight">
+                            <span class="weight-name">Light (300)</span>
+                            <span class="weight-example" style="font-weight: 300">Пример текста</span>
+                        </div>
+                        <div class="font-weight">
+                            <span class="weight-name">Regular (400)</span>
+                            <span class="weight-example" style="font-weight: 400">Пример текста</span>
+                        </div>
+                        <div class="font-weight">
+                            <span class="weight-name">Medium (500)</span>
+                            <span class="weight-example" style="font-weight: 500">Пример текста</span>
+                        </div>
+                        <div class="font-weight">
+                            <span class="weight-name">Bold (700)</span>
+                            <span class="weight-example" style="font-weight: 700">Пример текста</span>
+                        </div>
+                        <div class="font-weight">
+                            <span class="weight-name">Black (800)</span>
+                            <span class="weight-example" style="font-weight: 800">Пример текста</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="font-sample animated delay-1">
+                    <h3 class="font-name">Roboto Mono</h3>
+                    <div class="font-example" style="font-family: 'Roboto Mono'">
+                        Aa Bb Cc
+                    </div>
+                    <p>Моноширинный шрифт для технической информации, кода и точных данных.</p>
+                    
+                    <div class="font-weights">
+                        <div class="font-weight">
+                            <span class="weight-name">Light (300)</span>
+                            <span class="weight-example" style="font-weight: 300">Пример текста</span>
+                        </div>
+                        <div class="font-weight">
+                            <span class="weight-name">Regular (400)</span>
+                            <span class="weight-example" style="font-weight: 400">Пример текста</span>
+                        </div>
+                        <div class="font-weight">
+                            <span class="weight-name">Medium (500)</span>
+                            <span class="weight-example" style="font-weight: 500">Пример текста</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        </section>
+        
+        <section class="section" id="elements">
+            <h2 class="section-title">Ключевые элементы</h2>
+            <div class="elements-grid">
+                <div class="element-card animated">
+                    <div class="element-icon">
+                        <i class="fas fa-wave-square"></i>
+                    </div>
+                    <h3 class="element-title">Волнообразные формы</h3>
+                    <p class="element-desc">Динамичные линии, вдохновленные движением воды, создают ощущение потока и естественности.</p>
+                </div>
+                
+                <div class="element-card animated delay-1">
+                    <div class="element-icon">
+                        <i class="fas fa-border-all"></i>
+                    </div>
+                    <h3 class="element-title">Сеточная система</h3>
+                    <p class="element-desc">Строгая модульная сетка обеспечивает порядок и структуру, контрастируя с fluid-элементами.</p>
+                </div>
+                
+                <div class="element-card animated delay-2">
+                    <div class="element-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="element-title">Техно-детали</h3>
+                    <p class="element-desc">Минималистичные элементы, отсылающие к коду и цифровой эстетике, подчеркивают технологичность.</p>
+                </div>
+            </div>
+            
+           
+        </section>
+        
+        <section class="section" id="inspiration">
+            <h2 class="section-title">Вдохновение и референсы</h2>
+            <div class="inspiration">
+                <div class="inspiration-card animated">
+                    <h3 class="inspiration-title">Брутализм в цифре</h3>
+                    <p>Смелые, иногда намеренно "грубые" интерфейсные решения, которые ломают шаблоны традиционного веб-дизайна.</p>
+                </div>
+                
+                <div class="inspiration-card animated delay-1">
+                    <h3 class="inspiration-title">Неоморфизм</h3>
+                    <p>Сочетание теней и света для создания псевдообъемных элементов, которые кажутся частью интерфейса.</p>
+                </div>
+                
+                <div class="inspiration-card animated delay-2">
+                    <h3 class="inspiration-title">Киберпанк-эстетика</h3>
+                    <p>Неоновые цвета, техно-детали и футуристичные шрифты, создающие атмосферу цифрового будущего.</p>
+                </div>
+            </div>
+            
+          
+        </section>
+    </div>
+
+    <script>
+        // Простая анимация появления элементов при скролле
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.animated');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            animatedElements.forEach(el => {
+                el.style.opacity = 0;
+                el.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>

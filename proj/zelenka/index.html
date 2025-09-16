@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Айдентика ZelenkaSPB | Дизайн-система</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@300;400;500&display=swap');
+        
+        :root {
+            --primary-green: #2E8B57;
+            --primary-lightgreen: #8FBC8F;
+            --secondary-green: #3CB371;
+            --accent-brown: #8B4513;
+            --light-bg: #F8F9FA;
+            --light-card: #FFFFFF;
+            --dark-text: #2D2D2D;
+            --gray-text: #5A5A5A;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--light-bg) 0%, #FFFFFF 100%);
+            color: var(--dark-text);
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        /* Навигация */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 80px;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(45, 45, 45, 0.1);
+        }
+        
+        .logo {
+            font-weight: 800;
+            font-size: 2.2rem;
+            background: linear-gradient(90deg, var(--primary-green) 0%, var(--primary-lightgreen) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 15px rgba(46, 139, 87, 0.3));
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--gray-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-green);
+        }
+        
+        /* Герой секция */
+        .hero {
+            text-align: center;
+            margin-bottom: 100px;
+            position: relative;
+            padding: 60px 0;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" preserveAspectRatio="none"><path d="M0,0L48,42.7C96,85,192,171,288,186.7C384,203,480,149,576,144C672,139,768,181,864,213.3C960,245,1056,267,1152,256C1248,245,1344,203,1392,181.3L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z" fill="%232E8B57" fill-opacity="0.1"/></svg>');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--primary-green) 0%, var(--primary-lightgreen) 80%, var(--accent-brown) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.1;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.4rem;
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+            color: var(--gray-text);
+            font-weight: 400;
+        }
+        
+        /* Стиль для градиентной ссылки */
+        .gradient-link {
+            background: linear-gradient(90deg, var(--primary-green) 0%, var(--primary-lightgreen) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 600;
+            text-decoration: none;
+            transition: filter 0.3s ease;
+        }
+        
+        .gradient-link:hover {
+            filter: drop-shadow(0 0 8px rgba(46, 139, 87, 0.5));
+        }
+        
+        /* Секции */
+        .section {
+            margin-bottom: 100px;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+            color: var(--primary-green);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-green) 0%, var(--primary-lightgreen) 100%);
+            border-radius: 2px;
+        }
+        
+        /* Блоки для медиа-контента */
+        .media-block {
+            background: var(--light-card);
+            border-radius: 16px;
+            padding: 30px;
+            margin: 60px 0;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .media-placeholder {
+            width: 100%;
+            height: 400px;
+            background: rgba(46, 139, 87, 0.05);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-text);
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        
+        .media-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .media-caption {
+            color: var(--gray-text);
+            font-style: italic;
+        }
+        
+        /* Цветовая палитра */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .color-card {
+            background: var(--light-card);
+            border-radius: 16px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .color-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .color-sample {
+            height: 120px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .color-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--dark-text);
+        }
+        
+        .color-code {
+            font-family: 'Roboto Mono', monospace;
+            color: var(--gray-text);
+            background: rgba(45, 45, 45, 0.05);
+            padding: 5px 10px;
+            border-radius: 6px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        
+        /* Типографика */
+        .typography-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .font-sample {
+            background: var(--light-card);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .font-name {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-green);
+        }
+        
+        .font-example {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .font-weights {
+            margin-top: 20px;
+        }
+        
+        .font-weight {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .weight-name {
+            width: 100px;
+            color: var(--gray-text);
+        }
+        
+        .weight-example {
+            font-size: 1.2rem;
+        }
+        
+        /* Элементы дизайна */
+        .elements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .element-card {
+            background: var(--light-card);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .element-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .element-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--primary-green);
+        }
+        
+        .element-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--dark-text);
+        }
+        
+        .element-desc {
+            color: var(--gray-text);
+            line-height: 1.6;
+        }
+        
+        /* Вдохновение */
+        .inspiration {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .inspiration-card {
+            background: var(--light-card);
+            border-radius: 16px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .inspiration-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary-green) 0%, var(--primary-lightgreen) 100%);
+        }
+        
+        .inspiration-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--primary-green);
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .media-placeholder {
+                height: 300px;
+            }
+        }
+        
+        /* Анимации */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animated {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+        
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+        
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+        
+        /* Волны внизу */
+        .wave-divider {
+            margin: 60px 0;
+            height: 100px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" fill="%232E8B57" fill-opacity="0.2"></path></svg>');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="nav">
+            <div class="logo">ZELENKASPB</div>
+            <div class="nav-links">
+                <a href="/index.html">Главная</a>
+                <a href="#colors">Цвета</a>
+                <a href="#typography">Шрифты</a>
+                <a href="#elements">Элементы</a>
+                <a href="#inspiration">Вдохновение</a>
+            </div>
+        </nav>
+        
+        <section class="hero">
+            <h1 class="hero-title">ДИЗАЙН-СИСТЕМА ZELENKASPB</h1>
+            <p class="hero-subtitle">Айдентика, отражающая естественность и экологичность. Сочетание природных мотивов и современного дизайна.</p>
+            <p class="hero-subtitle"><a href="https://zelenkaspb.ru/" class="gradient-link">zelenkaspb.ru</a></p>
+        </section>
+        
+        <section class="section" id="colors">
+            <h2 class="section-title">Цветовая палитра</h2>
+            <div class="color-grid">
+                <div class="color-card animated">
+                    <div class="color-sample" style="background-color: #2E8B57;">
+                        Зеленый лесной
+                    </div>
+                    <div class="color-info">
+                        <h3>Основной зеленый</h3>
+                        <p>Символизирует природу, рост и экологичность бренда.</p>
+                        <span class="color-code">#2E8B57</span>
+                    </div>
+                </div>
+                
+                <div class="color-card animated delay-1">
+                    <div class="color-sample" style="background-color: #8FBC8F;">
+                        Зеленый светлый
+                    </div>
+                    <div class="color-info">
+                        <h3>Светло-зеленый акцент</h3>
+                        <p>Олицетворяет свежесть, молодость и натуральность.</p>
+                        <span class="color-code">#8FBC8F</span>
+                    </div>
+                </div>
+                
+                <div class="color-card animated delay-2">
+                    <div class="color-sample" style="background-color: #3CB371; color: white;">
+                        Зеленый морской
+                    </div>
+                    <div class="color-info">
+                        <h3>Морской зеленый</h3>
+                        <p>Выражает гармонию, баланс и естественную красоту.</p>
+                        <span class="color-code">#3CB371</span>
+                    </div>
+                </div>
+                
+                <div class="color-card animated delay-3">
+                    <div class="color-sample" style="background-color: #8B4513; color: white;">
+                        Коричневый земли
+                    </div>
+                    <div class="color-info">
+                        <h3>Землистый акцент</h3>
+                        <p>Напоминает о почве, природе и органическом происхождении.</p>
+                        <span class="color-code">#8B4513</span>
+                    </div>
+                </div>
+            </div>
+      
+        </section>
+        
+        <section class="section" id="typography">
+            <h2 class="section-title">Типографика</h2>
+            <div class="typography-grid">
+                <div class="font-sample animated">
+                    <h3 class="font-name">Montserrat</h3>
+                    <div class="font-example" style="font-family: 'Montserrat'">
+                        Aa Bb Cc
+                    </div>
+                    <p>Современный геометрический шрифт без засечек, обеспечивающий отличную читаемость на всех устройствах.</p>
+                    
+                    <div class="font-weights">
+                        <div class="font-weight">
+                            <span class="weight-name">Light (300)</span>
+                            <span class="weight-example" style="font-weight: 300">Пример текста</span>
+                        </div>
+                        <div class="font-weight">
+                            <span class="weight-name">Regular (400)</span>
+                            <span class="weight-example" style="font-weight: 400">Пример текста</span>
+                        </div>
+                        <div class="font-weight">
+                            <span class="weight-name">Medium (500)</span>
+                            <span class="weight-example" style="font-weight: 500">Пример текста</span>
+                        </div>
+                        <div class="font-weight">
+                            <span class="weight-name">Bold (700)</span>
+                            <span class="weight-example" style="font-weight: 700">Пример текста</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="font-sample animated delay-1">
+                    <h3 class="font-name">Roboto Mono</h3>
+                    <div class="font-example" style="font-family: 'Roboto Mono'">
+                        Aa Bb Cc
+                    </div>
+                    <p>Моноширинный шрифт для технической информации, кода и точных данных. Используется редко для акцентных элементов.</p>
+                    
+                    <div class="font-weights">
+                        <div class="font-weight">
+                            <span class="weight-name">Light (300)</span>
+                            <span class="weight-example" style="font-weight: 300">Пример текста</span>
+                        </div>
+                        <div class="font-weight">
+                            <span class="weight-name">Regular (400)</span>
+                            <span class="weight-example" style="font-weight: 400">Пример текста</span>
+                        </div>
+                        <div class="font-weight">
+                            <span class="weight-name">Medium (500)</span>
+                            <span class="weight-example" style="font-weight: 500">Пример текста</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Блок для медиа после типографики -->
+       
+        </section>
+        
+        <section class="section" id="elements">
+            <h2 class="section-title">Ключевые элементы</h2>
+            <div class="elements-grid">
+                <div class="element-card animated">
+                    <div class="element-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="element-title">Природные формы</h3>
+                    <p class="element-desc">Органические линии, вдохновленные формами растений, создают ощущение естественности и гармонии.</p>
+                </div>
+                
+                <div class="element-card animated delay-1">
+                    <div class="element-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3 class="element-title">Эко-текстуры</h3>
+                    <p class="element-desc">Текстуры, напоминающие природные материалы, подчеркивают экологичность бренда.</p>
+                </div>
+                
+                <div class="element-card animated delay-2">
+                    <div class="element-icon">
+                        <i class="fas fa-recycle"></i>
+                    </div>
+                    <h3 class="element-title">Эко-символика</h3>
+                    <p class="element-desc">Минималистичные элементы, отсылающие к природе и экологии, подчеркивают ценности бренда.</p>
+                </div>
+            </div>
+            
+            <!-- Блок для медиа после ключевых элементов -->
+           
+        </section>
+        
+        <section class="section" id="inspiration">
+            <h2 class="section-title">Вдохновение и референсы</h2>
+            <div class="inspiration">
+                <div class="inspiration-card animated">
+                    <h3 class="inspiration-title">Природная эстетика</h3>
+                    <p>Естественные формы, органические текстуры и природные цветовые палитры, которые создают ощущение гармонии с природой.</p>
+                </div>
+                
+                <div class="inspiration-card animated delay-1">
+                    <h3 class="inspiration-title">Эко-дизайн</h3>
+                    <p>Минималистичные решения, экологичные материалы и устойчивый подход к дизайну.</p>
+                </div>
+                
+                <div class="inspiration-card animated delay-2">
+                    <h3 class="inspiration-title">Скандинавский стиль</h3>
+                    <p>Чистота линий, функциональность и естественность, характерные для скандинавского дизайна.</p>
+                </div>
+            </div>
+            
+          
+        </section>
+    </div>
+
+    <script>
+        // Простая анимация появления элементов при скролле
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.animated');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            animatedElements.forEach(el => {
+                el.style.opacity = 0;
+                el.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>

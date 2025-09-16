@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Портфолио проектов</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@300;400;500&display=swap');
+        
+        :root {
+            --primary-blue: #2563EB;
+            --primary-cyan: #06B6D4;
+            --primary-purple: #8B5CF6;
+            --dark-bg: #0F0F0F;
+            --dark-card: #1A1A1A;
+            --light-text: #FFFFFF;
+            --gray-text: #A0A0A0;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #151515 100%);
+            color: var(--light-text);
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        /* Навигация */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 80px;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .logo {
+            font-weight: 800;
+            font-size: 2.2rem;
+            background: linear-gradient(90deg, var(--primary-blue) 0%, var(--primary-cyan) 50%, var(--primary-purple) 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 15px rgba(37, 99, 235, 0.3));
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--gray-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-cyan);
+        }
+        
+        /* Герой секция */
+        .hero {
+            text-align: center;
+            margin-bottom: 100px;
+        }
+        
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--primary-blue) 0%, var(--primary-cyan) 50%, var(--primary-purple) 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.1;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.4rem;
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+            color: var(--gray-text);
+            font-weight: 400;
+        }
+        
+        /* Стиль для градиентной ссылки */
+        .gradient-link {
+            background: linear-gradient(90deg, var(--primary-blue) 0%, var(--primary-cyan) 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 600;
+            text-decoration: none;
+            transition: filter 0.3s ease;
+        }
+        
+        .gradient-link:hover {
+            filter: drop-shadow(0 0 8px rgba(37, 99, 235, 0.5));
+        }
+        
+        /* Секции */
+        .section {
+            margin-bottom: 100px;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue) 0%, var(--primary-cyan) 100%);
+            border-radius: 2px;
+        }
+        
+        /* Сетка проектов */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 40px;
+        }
+        
+        .project-card {
+            background: var(--dark-card);
+            border-radius: 20px;
+            padding: 40px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary-blue) 0%, var(--primary-cyan) 100%);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .project-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+        }
+        
+        .project-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--primary-cyan);
+        }
+        
+        .project-description {
+            color: var(--gray-text);
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+        
+        .project-features {
+            margin-bottom: 30px;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            color: var(--gray-text);
+        }
+        
+        .feature-icon {
+            color: var(--primary-cyan);
+            margin-right: 12px;
+            font-size: 0.9rem;
+        }
+        
+        .project-link {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(90deg, var(--primary-blue) 0%, var(--primary-cyan) 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .project-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+        }
+        
+        /* Блоки для медиа */
+        .media-block {
+            background: var(--dark-card);
+            border-radius: 16px;
+            padding: 30px;
+            margin: 60px 0;
+            text-align: center;
+        }
+        
+        .media-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .media-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .media-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .media-landscape {
+            aspect-ratio: 16/9;
+            height: 250px;
+        }
+        
+        .media-caption {
+            color: var(--gray-text);
+            font-style: italic;
+            margin-top: 15px;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-card {
+                padding: 30px;
+            }
+            
+            .media-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Анимации */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animated {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+        
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+        
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="nav">
+            <div class="logo">ПОРТФОЛИО</div>
+            <div class="nav-links">
+                <a href="/index.html">Главная</a>
+                <a href="#projects">Проекты</a>
+                <a href="#about">Обо мне</a>
+                <a href="#contact">Контакты</a>
+            </div>
+        </nav>
+        
+        <section class="hero">
+            <h1 class="hero-title">МОИ ПРОЕКТЫ</h1>
+            <p class="hero-subtitle">Коллекция работ, демонстрирующая expertise в веб-дизайне, айдентике и создании презентаций</p>
+        </section>
+        
+        <section class="section" id="projects">
+            <h2 class="section-title">Ключевые проекты</h2>
+            
+            <div class="projects-grid">
+                <!-- Проект 1 -->
+                <div class="project-card animated">
+                    <div class="project-number">01</div>
+                    <h3 class="project-title">Адаптивные страницы для психолога</h3>
+                    <p class="project-description">
+                        Полностью прототипированные и готовые к использованию адаптивные веб-страницы для психологической практики. 
+                        Дизайн focuses на создании спокойной и доверительной атмосферы для потенциальных клиентов.
+                    </p>
+                    <div class="project-features">
+                        <div class="feature-item">
+                            <span class="feature-icon">✓</span>
+                            <span>Полная адаптивность под все устройства</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✓</span>
+                            <span>Прототипы в Figma с интерактивными элементами</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✓</span>
+                            <span>Психологически выверенная цветовая палитра</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✓</span>
+                            <span>Готовы к имплементации разработчиками</span>
+                        </div>
+                    </div>
+                    <a href="#project1-link" class="project-link">Смотреть проект</a>
+                </div>
+                
+                <!-- Проект 2 -->
+                <div class="project-card animated delay-1">
+                    <div class="project-number">02</div>
+                    <h3 class="project-title">Айдентика для презентаций Альфа Банка</h3>
+                    <p class="project-description">
+                        Разработка комплексной айдентики для корпоративных презентаций одного из крупнейших банков России.
+                        Проект включал создание системы визуальных элементов, соответствующих бренд-буку и корпоративным стандартам.
+                    </p>
+                    <div class="project-features">
+                        <div class="feature-item">
+                            <span class="feature-icon">✓</span>
+                            <span>Соблюдение корпоративных стандартов бренда</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✓</span>
+                            <span>Система иконок и инфографики</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✓</span>
+                            <span>Адаптивные шаблоны для различных форматов</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✓</span>
+                            <span>Гайдлайны по использованию элементов</span>
+                        </div>
+                    </div>
+                    <a href="#project2-link" class="project-link">Смотреть проект</a>
+                </div>
+                
+                <!-- Проект 3 -->
+                <div class="project-card animated delay-2">
+                    <div class="project-number">03</div>
+                    <h3 class="project-title">Кейс-презентация</h3>
+                    <p class="project-description">
+                        Создание комплексной кейс-презентации с глубокой проработкой контента и визуальной составляющей.
+                        Особое внимание уделено нарративу и логике подачи информации при ограниченном пространстве слайдов.
+                    </p>
+                    <div class="project-features">
+                        <div class="feature-item">
+                            <span class="feature-icon">✓</span>
+                            <span>Структурирование сложного контента</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✓</span>
+                            <span>Визуализация данных и статистики</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✓</span>
+                            <span>Создание запоминающейся нарративной структуры</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✓</span>
+                            <span>Оптимизация информации для ограниченного пространства</span>
+                        </div>
+                    </div>
+                    <a href="#project3-link" class="project-link">Смотреть проект</a>
+                </div>
+                
+                <!-- Проект 4 -->
+                <div class="project-card animated delay-3">
+                    <div class="project-number">04</div>
+                    <h3 class="project-title">Бренд-презентация для Балтики</h3>
+                    <p class="project-description">
+                        Разработка бренд-презентации для одной из крупнейших пивоваренных компаний. 
+                        Проект включал создание уникального визуального языка, отражающего ценности бренда и его рыночное позиционирование.
+                    </p>
+                    <div class="project-features">
+                        <div class="feature-item">
+                            <span class="feature-icon">✓</span>
+                            <span>Анализ целевой аудитории и рынка</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✓</span>
+                            <span>Разработка уникального визуального стиля</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✓</span>
+                            <span>Создание системы графических элементов</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✓</span>
+                            <span>Адаптация под различные форматы презентаций</span>
+                        </div>
+                    </div>
+                    <a href="#project4-link" class="project-link">Смотреть проект</a>
+                </div>
+                
+                <!-- Проект 5 -->
+                <div class="project-card animated">
+                    <div class="project-number">05</div>
+                    <h3 class="project-title">Презентации для ВШЭ и ВАВТ</h3>
+                    <p class="project-description">
+                        Серия из трех презентаций для ведущих образовательных учреждений. 
+                        Каждая презентация tailored под специфику учреждения и целевую аудиторию, сочетая академическую строгость с современным дизайном.
+                    </p>
+                    <div class="project-features">
+                        <div class="feature-item">
+                            <span class="feature-icon">✓</span>
+                            <span>Индивидуальный подход к каждому учреждению</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✓</span>
+                            <span>Соответствие академическим стандартам</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✓</span>
+                            <span>Современный дизайн с элементами бренда</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✓</span>
+                            <span>Оптимизация для образовательного контента</span>
+                        </div>
+                    </div>
+                    <a href="#project5-link" class="project-link">Смотреть проект</a>
+                </div>
+            </div>
+        </section>
+        
+    
+        </section>
+        
+        <section class="section" id="about">
+            <h2 class="section-title">Обо мне</h2>
+            <div style="background: var(--dark-card); border-radius: 20px; padding: 40px;">
+                <p style="color: var(--gray-text); line-height: 1.8; margin-bottom: 20px;">
+                    Специализируюсь на создании комплексных digital-решений: от веб-дизайна и айдентики до презентаций и бренд-стратегий. 
+                    Каждый проект — это уникальная задача, требующая глубокого погружения в контекст и понимания бизнес-целей клиента.
+                </p>
+                <p style="color: var(--gray-text); line-height: 1.8;">
+                    Работаю с различными отраслями: финансы, образование, FMCG, психологические услуги. 
+                    Создаю решения, которые не только выглядят современно, но и решают конкретные бизнес-задачи.
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Анимация появления элементов при скролле
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.animated');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            animatedElements.forEach(el => {
+                el.style.opacity = 0;
+                el.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>

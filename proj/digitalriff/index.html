@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DigitalRiff | Айдентика и дизайн-система</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@300;400;500&display=swap');
+        
+        :root {
+            --primary-blue: #2563EB;
+            --primary-cyan: #06B6D4;
+            --primary-purple: #8B5CF6;
+            --dark-bg: #0F0F0F;
+            --dark-card: #1A1A1A;
+            --light-text: #FFFFFF;
+            --gray-text: #A0A0A0;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #151515 100%);
+            color: var(--light-text);
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        /* Навигация */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 80px;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .logo {
+            font-weight: 800;
+            font-size: 2.2rem;
+            background: linear-gradient(90deg, var(--primary-blue) 0%, var(--primary-cyan) 50%, var(--primary-purple) 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 15px rgba(37, 99, 235, 0.3));
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--gray-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-cyan);
+        }
+        
+        /* Герой секция */
+        .hero {
+            text-align: center;
+            margin-bottom: 100px;
+        }
+        
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--primary-blue) 0%, var(--primary-cyan) 50%, var(--primary-purple) 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.1;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.4rem;
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+            color: var(--gray-text);
+            font-weight: 400;
+        }
+        
+        /* Стиль для градиентной ссылки */
+        .gradient-link {
+            background: linear-gradient(90deg, var(--primary-blue) 0%, var(--primary-cyan) 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 600;
+            text-decoration: none;
+            transition: filter 0.3s ease;
+        }
+        
+        .gradient-link:hover {
+            filter: drop-shadow(0 0 8px rgba(37, 99, 235, 0.5));
+        }
+        
+        /* Секции */
+        .section {
+            margin-bottom: 100px;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue) 0%, var(--primary-cyan) 100%);
+            border-radius: 2px;
+        }
+        
+        /* Блоки для медиа-контента - ИСПРАВЛЕНО */
+        .media-block {
+            background: var(--dark-card);
+            border-radius: 16px;
+            padding: 30px;
+            margin: 60px 0;
+            text-align: center;
+        }
+        
+        .media-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+            align-items: center;
+            justify-items: center;
+        }
+        
+        .media-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            background: transparent;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .media-image {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            display: block;
+            border-radius: 8px;
+        }
+        
+        .media-landscape {
+            aspect-ratio: 16/9;
+        }
+        
+        .media-portrait {
+            aspect-ratio: 9/16;
+            max-width: 300px;
+        }
+        
+        .media-square {
+            aspect-ratio: 1/1;
+        }
+        
+        .media-caption {
+            color: var(--gray-text);
+            font-style: italic;
+            margin-top: 15px;
+        }
+        
+        /* Концепция бренда */
+        .brand-concept {
+            background: var(--dark-card);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .concept-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary-cyan);
+        }
+        
+        .concept-text {
+            color: var(--gray-text);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        /* Направления дизайна */
+        .direction-tabs {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .direction-tab {
+            padding: 15px 30px;
+            background: var(--dark-card);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            color: var(--light-text);
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        
+        .direction-tab.active {
+            background: linear-gradient(90deg, var(--primary-blue) 0%, var(--primary-cyan) 100%);
+            color: white;
+        }
+        
+        .direction-content {
+            display: none;
+        }
+        
+        .direction-content.active {
+            display: block;
+        }
+        
+        /* Цветовая палитра */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .color-card {
+            background: var(--dark-card);
+            border-radius: 16px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+        }
+        
+        .color-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .color-sample {
+            height: 100px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        
+        .color-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+        
+        .color-code {
+            font-family: 'Roboto Mono', monospace;
+            color: var(--gray-text);
+            font-size: 0.9rem;
+        }
+        
+        /* Эффект стекла */
+        .glass-effect {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+        
+        .glass-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-cyan);
+        }
+        
+        /* Кнопки */
+        .buttons-demo {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border-radius: 50px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(90deg, var(--primary-blue) 0%, var(--primary-cyan) 100%);
+            color: white;
+        }
+        
+        .btn-glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            color: white;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary-blue);
+            color: var(--primary-blue);
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .direction-tabs {
+                flex-direction: column;
+            }
+            
+            .media-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .media-portrait {
+                max-width: 250px;
+            }
+        }
+        
+        /* Анимации */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animated {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+        
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+        
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="nav">
+            <div class="logo">DIGITALRIFF</div>
+            <div class="nav-links">
+                <a href="/index.html">Главная</a>
+                <a href="#concept">Концепция</a>
+                <a href="#directions">Направления</a>
+                <a href="#elements">Элементы</a>
+            </div>
+        </nav>
+        
+        <section class="hero">
+            <h1 class="hero-title">АЙДЕНТИКА DIGITALRIFF</h1>
+            <p class="hero-subtitle">Дизайн-система для digital-агентства, специализирующегося на маркетинге в поисковых системах и привлечении качественных лидов</p>
+        </section>
+        
+        <section class="section" id="concept">
+            <h2 class="section-title">Концепция бренда</h2>
+            <div class="brand-concept">
+                <h3 class="concept-title">DigitalRiff: Маркетинг в поисковых системах для вашего бизнеса!</h3>
+                <p class="concept-text">Название "DigitalRiff" обыгрывает музыкальную метафору - рифф как повторяющаяся запоминающаяся фраза в музыке. В контексте digital-маркетинга это символизирует повторяющиеся успешные стратегии, которые приносят результат.</p>
+                <p class="concept-text">Мы разработали айдентику, которая отражает современность, технологичность и креативность агентства. Основная цель - передать идею превращения сайта компании в лидера в Яндекс и Google через привлечение качественных лидов для увеличения продаж.</p>
+                <p class="concept-text">Было создано два дизайн-направления, каждое из которых по-своему интерпретирует суть бренда и его ценностное предложение.</p>
+            </div>
+        </section>
+        
+        <section class="section" id="directions">
+            <h2 class="section-title">Дизайн-направления</h2>
+            
+            <div class="direction-tabs">
+                <button class="direction-tab active" data-tab="direction1">Направление 1: Минимализм и яркость</button>
+                <button class="direction-tab" data-tab="direction2">Направление 2: Элегантность и современность</button>
+            </div>
+            
+            <div id="direction1" class="direction-content active">
+                <h3 style="font-size: 1.8rem; margin-bottom: 20px; color: var(--primary-cyan);">Минимализм, яркость, современность</h3>
+                <p style="color: var(--gray-text); margin-bottom: 30px; line-height: 1.8;">Это направление фокусируется на смелых цветовых решениях, четких линиях и современной эстетике. Оно передает динамичность и технологичность digital-сферы.</p>
+                
+                <h4 style="font-size: 1.4rem; margin-bottom: 20px; color: var(--light-text);">Цветовая палитра</h4>
+                <div class="color-grid">
+                    <div class="color-card animated">
+                        <div class="color-sample" style="background-color: #E0FB60;">
+                            
+                        </div>
+                        <div class="color-info">
+                            <h3>Основной синий</h3>
+                            <div class="color-code">#E0FB60</div>
+                        </div>
+                    </div>
+                    
+                    <div class="color-card animated delay-1">
+                        <div class="color-sample" style="background-color: #141414;">
+                            Голубой
+                        </div>
+                        <div class="color-info">
+                            <h3>Акцентный голубой</h3>
+                            <div class="color-code">#06B6D4</div>
+                        </div>
+                    </div>
+                    
+                    <div class="color-card animated delay-2">
+                        <div class="color-sample" style="background-color: #A0AFFD;">
+                            Фиолетовый
+                        </div>
+                        <div class="color-info">
+                            <h3>Фиолетовый акцент</h3>
+                            <div class="color-code">#8B5CF6</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h4 style="font-size: 1.4rem; margin-bottom: 20px; color: var(--light-text);">Ключевые элементы</h4>
+                <ul style="color: var(--gray-text); margin-bottom: 30px; padding-left: 20px; line-height: 1.8;">
+                    <li>Геометрические формы и острые углы</li>
+                    <li>Яркие градиенты от синего к фиолетовому</li>
+                    <li>Минималистичные типографические решения</li>
+                    <li>Высокий контраст между элементами</li>
+                </ul>
+                
+                <div class="media-block">
+                    <div class="media-container">
+                        <div class="media-item media-portrait">
+                            <img src="/proj/digitalriff/img/Frame 23.png" alt="DigitalRiff Main Page" class="media-image">
+                        </div>
+                        <div class="media-item media-portrait">
+                            <img src="/proj/digitalriff/img/Frame 6.png" alt="DigitalRiff Mobile Version" class="media-image">
+                        </div>
+                    </div>
+                    <p class="media-caption">Концепция первого направления - минимализм, яркость и технологичность</p>
+                </div>
+            </div>
+            
+            <div id="direction2" class="direction-content">
+                <h3 style="font-size: 1.8rem; margin-bottom: 20px; color: var(--primary-cyan);">Элегантность и современность</h3>
+                <p style="color: var(--gray-text); margin-bottom: 30px; line-height: 1.8;">Это направление сочетаеn в себе утонченность и современные digital-тренды. Оно фокусируется на плавных переходах, сложных градиентах и эффекте стекла.</p>
+                
+                <h4 style="font-size: 1.4rem; margin-bottom: 20px; color: var(--light-text);">Цветовая палитра</h4>
+                <div class="color-grid">
+                    <div class="color-card animated">
+                        <div class="color-sample" style="background: linear-gradient(135deg, #3B82F6 0%, #6366F1 100%);">
+                            Градиент 1
+                        </div>
+                        <div class="color-info">
+                            <h3>Сине-фиолетовый</h3>
+                            <div class="color-code">#3B82F6 → #6366F1</div>
+                        </div>
+                    </div>
+                    
+                    <div class="color-card animated delay-1">
+                        <div class="color-sample" style="background: linear-gradient(135deg, #EC4899 0%, #8B5CF6 100%);">
+                            Градиент 2
+                        </div>
+                        <div class="color-info">
+                            <h3>Пурпурно-фиолетовый</h3>
+                            <div class="color-code">#EC4899 → #8B5CF6</div>
+                        </div>
+                    </div>
+                    
+                    <div class="color-card animated delay-2">
+                        <div class="color-sample" style="background-color: #1E293B; color: white;">
+                            Темный фон
+                        </div>
+                        <div class="color-info">
+                            <h3>Глубокий синий</h3>
+                            <div class="color-code">#1E293B</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h4 style="font-size: 1.4rem; margin-bottom: 20px; color: var(--light-text);">Ключевые элементы</h4>
+                <ul style="color: var(--gray-text); margin-bottom: 30px; padding-left: 20px; line-height: 1.8;">
+                    <li>Эффект стекла (glass morphism) с размытием и прозрачностью</li>
+                    <li>Сложные многоцветные градиенты</li>
+                    <li>Плавные curves и обтекаемые формы</li>
+                    <li>Минималистичные шрифты с акцентами</li>
+                </ul>
+                
+                <div class="media-block">
+                    <div class="media-container">
+                        <div class="media-item media-portrait">
+                            <img src="/proj/digitalriff/img/Frame 21.png" alt="DigitalRiff Design Example 1" class="media-image">
+                        </div>
+                        <div class="media-item media-portrait">
+                            <img src="/proj/digitalriff/img/Frame 22.png" alt="DigitalRiff Design Example 2" class="media-image">
+                        </div>
+                        <div class="media-item media-portrait">
+                            <img src="/proj/digitalriff/img/Frame 24.png" alt="DigitalRiff Design Example 3" class="media-image">
+                        </div>
+                    </div>
+                    <p class="media-caption">Концепция второго направления - элегантность и стеклянные эффекты</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section" id="elements">
+            <h2 class="section-title">Ключевые элементы дизайна</h2>
+            
+            <div class="glass-effect">
+                <h3 class="glass-title">Эффект стекла (Glass morphism)</h3>
+                <p style="color: var(--gray-text); margin-bottom: 20px; line-height: 1.8;">Один из ключевых элементов дизайна - эффект стекла, который создает современный технологичный вид. Этот эффект достигается за счет полупрозрачного фона с размытием и тонкой светлой обводки.</p>
+                
+                <div class="buttons-demo">
+                    <button class="btn btn-glass">Кнопка со стеклом</button>
+                    <button class="btn btn-primary">Градиентная кнопка</button>
+                    <button class="btn btn-outline">Контурная кнопка</button>
+                </div>
+            </div>
+            
+            <div style="margin: 40px 0;">
+                <h3 style="font-size: 1.5rem; margin-bottom: 20px; color: var(--primary-cyan);">Типографика</h3>
+                <p style="color: var(--gray-text); margin-bottom: 20px; line-height: 1.8;">Основной шрифт - Montserrat, который передает современность и четкость. Для акцентных элементов используется моноширинный шрифт Roboto Mono, который ассоциируется с кодом и технологиями.</p>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px;">
+                    <div>
+                        <div style="font-family: 'Montserrat'; font-size: 2.5rem; font-weight: 800; margin-bottom: 15px;">Заголовок</div>
+                        <div style="font-family: 'Montserrat'; font-size: 1.2rem; margin-bottom: 15px;">Подзаголовок</div>
+                        <div style="font-family: 'Montserrat'; color: var(--gray-text);">Основной текст для описаний и параграфов</div>
+                    </div>
+                    <div>
+                        <div style="font-family: 'Roboto Mono'; font-size: 1.5rem; margin-bottom: 15px; color: var(--primary-cyan);">// Акцентный текст</div>
+                        <div style="font-family: 'Roboto Mono'; color: var(--gray-text);">Используется для выделения важной информации, цифр и технических деталей.</div>
+                    </div>
+                </div>
+            </div>
+            
+        
+        </section>
+    </div>
+
+    <script>
+        // Переключение между направлениями дизайна
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.direction-tab');
+            const contents = document.querySelectorAll('.direction-content');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const tabId = tab.getAttribute('data-tab');
+                    
+                    // Убираем активный класс у всех табов и контента
+                    tabs.forEach(t => t.classList.remove('active'));
+                    contents.forEach(c => c.classList.remove('active'));
+                    
+                    // Добавляем активный класс к выбранному табу и контенту
+                    tab.classList.add('active');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // Анимация появления элементов при скролле
+            const animatedElements = document.querySelectorAll('.animated');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            animatedElements.forEach(el => {
+                el.style.opacity = 0;
+                el.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
